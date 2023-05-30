@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MusicList</string>
+    <string name="affirmation1">Song 1</string>
+    <string name="affirmation2">Song 2</string>
+    <string name="affirmation3">Song 3</string>
+    <string name="affirmation4">Song 4</string>
+    <string name="affirmation5">Song 5</string>
+    <string name="affirmation6">Song 6</string>
+    <string name="affirmation7">Song 7</string>
+    <string name="affirmation8">Song 8</string>
+    <string name="affirmation9">Song 9</string>
+    <string name="affirmation10">Song 10</string>
+    <string name="name1">Name 1</string>
+    <string name="name2">Name 2</string>
+    <string name="name3">Name 3</string>
+    <string name="name4">Name 4</string>
+    <string name="name5">Name 5</string>
+    <string name="name6">Name 6</string>
+    <string name="name7">Name 7</string>
+    <string name="name8">Name 8</string>
+    <string name="name9">Name 9</string>
+    <string name="name10">Name 10</string>
+</resources>
