@@ -1,5 +1,6 @@
 package com.example.musiclist
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,11 +10,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -36,6 +39,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -47,10 +51,16 @@ import com.example.musiclist.data.Datasource
 import com.example.musiclist.model.Affirmation
 import com.example.musiclist.ui.theme.MusicListTheme
 
+
 @ExperimentalMaterial3Api
 class MainActivity : ComponentActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //setContentView(R.layout.activity_main)
+        // Grab our reference to the ComposeView from our layout.
+        //val composeView = findViewById<ComposeView>(R.id.compose_view)
+        //composeView.
         setContent {
             MusicListTheme {
                 // A surface container using the 'background' color from the theme
@@ -70,19 +80,7 @@ class MainActivity : ComponentActivity() {
 fun MusicApp() {
     Scaffold(
         topBar = {
-            CenterAlignedTopAppBar(
-                title = {
-                    Text(
-                        text = "Music Playlist",
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.headlineMedium
-                    )
-                },
-                colors = TopAppBarDefaults.smallTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
-                )
-            )
+            MusicTopBar()
         }
     ) { innerPadding ->
         Surface(
@@ -100,7 +98,23 @@ fun MusicApp() {
     }
 
 }
-
+@ExperimentalMaterial3Api
+@Composable
+fun MusicTopBar() {
+    CenterAlignedTopAppBar(
+        title = {
+            Text(
+                text = "Teams",
+                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.headlineMedium
+            )
+        },
+        colors = TopAppBarDefaults.smallTopAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+        )
+    )
+}
 @ExperimentalMaterial3Api
 @Composable
 fun MusicList(affirmationList: List<Affirmation>, modifier: Modifier = Modifier) {

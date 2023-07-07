@@ -1,7 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    //id 'app.cash.paparazzi'
 }
+
+apply plugin: 'com.facebook.testing.screenshot'
+//apply plugin: 'app.cash.paparazzi'
 
 android {
     namespace 'com.example.musiclist'
@@ -10,11 +14,14 @@ android {
     defaultConfig {
         applicationId "com.example.musiclist"
         minSdk 24
-        targetSdk 33
+        //noinspection ExpiredTargetSdkVersion
+        targetSdk 29
+        //targetSdk 33
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.example.musiclist.MyTestRunner"
         vectorDrawables {
             useSupportLibrary true
         }
@@ -35,6 +42,7 @@ android {
     }
     buildFeatures {
         compose true
+        viewBinding true
     }
     composeOptions {
         kotlinCompilerExtensionVersion '1.3.2'
@@ -63,4 +71,22 @@ dependencies {
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4"
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+
+    androidTestImplementation 'androidx.test:core:1.5.0'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+
+    implementation 'com.facebook.litho:litho-core:0.43.0'
+    implementation 'com.facebook.litho:litho-widget:0.43.0'
+    implementation 'com.facebook.soloader:soloader:0.10.1'
+}
+
+screenshots {
+    //referenceDir = "$projectDir/pics/screenshots"
+    pythonExecutable 'python'
 }
